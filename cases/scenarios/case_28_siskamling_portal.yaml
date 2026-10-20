@@ -1,0 +1,56 @@
+case_id: "case_28_siskamling_portal"
+title: "Jaringan Komunikasi: Penutupan Portal Siskamling (Re-Koneksi Pos Ronda)"
+description: "Skenario N=5 berbasis Minimum Spanning Tree (MST). Penutupan portal siskamling akibat isu keamanan memutus kabel komunikasi antar pos, menuntut pembentukan kembali topologi jaringan HT/sensor terpendek."
+
+nodes:
+  - id: 0
+    label: "Pos Ronda Utama / Central (Start)"
+    pos: [0.0, 0.0]
+  - id: 1
+    label: "Pos Portal Sektor Utara"
+    pos: [6.0, 4.0]
+  - id: 2
+    label: "Pos Portal Sektor Selatan"
+    pos: [6.0, -4.0]
+  - id: 3
+    label: "Pos Ronda Lapangan Tengah"
+    pos: [12.0, 0.0]
+  - id: 4
+    label: "Terminal Sinyal Balai Desa (Goal)"
+    pos: [18.0, 0.0]
+
+edges:
+  - from: 0
+    to: 1
+    weight: 3.0
+    capacity: 10.0
+  - from: 0
+    to: 2
+    weight: 8.0
+    capacity: 10.0
+  - from: 1
+    to: 2
+    weight: 2.0
+    capacity: 5.0
+  - from: 1
+    to: 3
+    weight: 6.0
+    capacity: 8.0
+  - from: 2
+    to: 3
+    weight: 3.0
+    capacity: 8.0
+  - from: 3
+    to: 4
+    weight: 5.0
+    capacity: 12.0
+
+execution_plan:
+  start_node: 0
+  goal_node: 4
+  events:
+    - step: 1
+      type: "DYNAMIC_EDGE_WEIGHT"
+      target_edge: [0, 1]
+      new_weight: 95.0
+      description: "Portal Siskamling dikunci total (Edge 0 -> 1), algoritma MST menghitung ulang topologi jaringan komunikasi antar pos terpendek!"

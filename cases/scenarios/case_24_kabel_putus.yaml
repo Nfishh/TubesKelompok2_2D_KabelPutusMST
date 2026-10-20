@@ -1,0 +1,56 @@
+case_id: "case_24_kabel_putus"
+title: "Jaringan Komunikasi: Kabel Sirkuit Utama Putus Akibat Pohon/Cuaca"
+description: "Skenario N=5 berbasis Minimum Spanning Tree (MST). Putusnya sirkuit kabel komunikasi utama memutus jaringan alarm antar gedung, menuntut pembentukan kembali topologi jaringan terkecil dengan total panjang kabel minimum."
+
+nodes:
+  - id: 0
+    label: "Master Switch Panel (Start)"
+    pos: [0.0, 0.0]
+  - id: 1
+    label: "Sub-Panel Gedung A"
+    pos: [6.0, 4.0]
+  - id: 2
+    label: "Sub-Panel Gedung B"
+    pos: [6.0, -4.0]
+  - id: 3
+    label: "Sub-Panel Gedung C"
+    pos: [12.0, 0.0]
+  - id: 4
+    label: "Terminal Siren Luar (Goal)"
+    pos: [18.0, 0.0]
+
+edges:
+  - from: 0
+    to: 1
+    weight: 3.0
+    capacity: 10.0
+  - from: 0
+    to: 2
+    weight: 8.0
+    capacity: 10.0
+  - from: 1
+    to: 2
+    weight: 4.0
+    capacity: 5.0
+  - from: 1
+    to: 3
+    weight: 7.0
+    capacity: 8.0
+  - from: 2
+    to: 3
+    weight: 2.0
+    capacity: 8.0
+  - from: 3
+    to: 4
+    weight: 5.0
+    capacity: 12.0
+
+execution_plan:
+  start_node: 0
+  goal_node: 4
+  events:
+    - step: 1
+      type: "DYNAMIC_EDGE_WEIGHT"
+      target_edge: [0, 1]
+      new_weight: 99.0
+      description: "Kabel Sirkuit Utama Putus (Edge 0 -> 1)! Algoritma MST menghitung ulang pembentukan topologi jaringan komunikasi terpendek."

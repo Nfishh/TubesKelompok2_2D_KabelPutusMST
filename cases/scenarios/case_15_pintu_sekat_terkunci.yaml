@@ -1,0 +1,56 @@
+case_id: "case_15_pintu_sekat_terkunci"
+title: "Jaringan Komunikasi: Pintu Sekat Otomatis Terkunci (Re-Koneksi Sinyal)"
+description: "Skenario N=5 berbasis Minimum Spanning Tree (MST). Terkuncinya pintu sekat otomatis memutus kabel kontrol utama, menuntut pembentukan kembali jaringan topologi sinyal sirkuit dengan total jarak/kabel minimum."
+
+nodes:
+  - id: 0
+    label: "Panel Utama Kontrol Gedung (Start / Master)"
+    pos: [0.0, 0.0]
+  - id: 1
+    label: "Modul Sekat Sektor 1"
+    pos: [6.0, 4.0]
+  - id: 2
+    label: "Modul Sekat Sektor 2"
+    pos: [6.0, -4.0]
+  - id: 3
+    label: "Modul Sekat Tangga Darurat"
+    pos: [12.0, 0.0]
+  - id: 4
+    label: "Terminal Relay Sirkuit Akhir (Goal)"
+    pos: [18.0, 0.0]
+
+edges:
+  - from: 0
+    to: 1
+    weight: 5.0
+    capacity: 10.0
+  - from: 0
+    to: 2
+    weight: 9.0
+    capacity: 10.0
+  - from: 1
+    to: 2
+    weight: 3.0
+    capacity: 5.0
+  - from: 1
+    to: 3
+    weight: 7.0
+    capacity: 8.0
+  - from: 2
+    to: 3
+    weight: 4.0
+    capacity: 8.0
+  - from: 3
+    to: 4
+    weight: 6.0
+    capacity: 12.0
+
+execution_plan:
+  start_node: 0
+  goal_node: 4
+  events:
+    - step: 1
+      type: "DYNAMIC_EDGE_WEIGHT"
+      target_edge: [0, 1]
+      new_weight: 80.0
+      description: "Pintu Sekat Otomatis Terkunci memutus jalur kabel kontrol (Edge 0 -> 1), algoritma MST merutekan ulang topologi sinyal sirkuit terkecil!"

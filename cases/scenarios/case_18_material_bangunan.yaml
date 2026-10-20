@@ -1,0 +1,56 @@
+case_id: "case_18_material_bangunan"
+title: "Jaringan Komunikasi: Tumpukan Material Bangunan Memutus Jalur Kabel"
+description: "Skenario N=5 berbasis Minimum Spanning Tree (MST). Tumpukan pasir dan batu bata merusak sirkuit jaringan sensor utama, menuntut pengikatan kembali seluruh nodus sensor dengan total jarak kabel minimum."
+
+nodes:
+  - id: 0
+    label: "Panel Kontrol Utama (Master)"
+    pos: [0.0, 0.0]
+  - id: 1
+    label: "Sensor Lorong Pasir"
+    pos: [6.0, 4.0]
+  - id: 2
+    label: "Sensor Lorong Batako"
+    pos: [6.0, -4.0]
+  - id: 3
+    label: "Sensor Area Proyek Tengah"
+    pos: [12.0, 0.0]
+  - id: 4
+    label: "Terminal Sinyal Akhir (Goal)"
+    pos: [18.0, 0.0]
+
+edges:
+  - from: 0
+    to: 1
+    weight: 4.0
+    capacity: 10.0
+  - from: 0
+    to: 2
+    weight: 8.0
+    capacity: 10.0
+  - from: 1
+    to: 2
+    weight: 3.0
+    capacity: 5.0
+  - from: 1
+    to: 3
+    weight: 6.0
+    capacity: 8.0
+  - from: 2
+    to: 3
+    weight: 5.0
+    capacity: 8.0
+  - from: 3
+    to: 4
+    weight: 7.0
+    capacity: 12.0
+
+execution_plan:
+  start_node: 0
+  goal_node: 4
+  events:
+    - step: 1
+      type: "DYNAMIC_EDGE_WEIGHT"
+      target_edge: [0, 1]
+      new_weight: 90.0
+      description: "Longsoran Tumpukan Material Bangunan memutus sirkuit kabel utama (Edge 0 -> 1), algoritma MST membentuk topologi jaringan minimum baru!"

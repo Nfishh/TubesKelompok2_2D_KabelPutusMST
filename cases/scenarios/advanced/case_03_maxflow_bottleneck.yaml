@@ -1,0 +1,44 @@
+case_id: "case_maxflow_bottleneck"
+title: "Simulasi Deteksi Bottleneck Pintu Darurat (Jülich PED Archive)"
+description: "Pengukuran arus maksimum pejalan kaki melewati pintu penyempitan (bottleneck)."
+
+nodes:
+  - id: 0
+    label: "Hall Evakuasi Utama"
+    pos: [0.0, 10.0]
+  - id: 1
+    label: "Koridor A (Lebar 2m)"
+    pos: [10.0, 15.0]
+  - id: 2
+    label: "Koridor B (Lebar 1.5m)"
+    pos: [10.0, 5.0]
+  - id: 3
+    label: "Pintu Keluar Utama (Exit Discharge)"
+    pos: [20.0, 10.0]
+
+edges:
+  - from: 0
+    to: 1
+    capacity: 15.0 # Kapasitas arus orang/menit
+    weight: 1.0
+  - from: 0
+    to: 2
+    capacity: 10.0
+    weight: 1.0
+  - from: 1
+    to: 2
+    capacity: 5.0
+    weight: 1.0
+  - from: 1
+    to: 3
+    capacity: 10.0
+    weight: 1.0
+  - from: 2
+    to: 3
+    capacity: 10.0
+    weight: 1.0
+
+execution_plan:
+  start_node: 0
+  goal_node: 3
+  events: []

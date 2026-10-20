@@ -1,0 +1,55 @@
+case_id: "case_16_tawon_vespa"
+title: "Pengaturan Arus Evakuasi: Sarang Tawon Vespa Mengamuk di Lorong"
+description: "Skenario N=5 berbasis Graph Coloring / Conflict Scheduling. Sarang tawon vespa terganggu dan mengamuk di lorong penghubung, menuntut alokasi slot waktu (color/time-slot) agar evakuasi dilakukan secara bertahap dan terpisah dari area sengatan."
+
+nodes:
+  - id: 0
+    label: "Selasar Barat (Start)"
+    pos: [0.0, 0.0]
+  - id: 1
+    label: "Lorong Tawon A"
+    pos: [5.0, 4.0]
+  - id: 2
+    label: "Lorong Tawon B"
+    pos: [5.0, -4.0]
+  - id: 3
+    label: "Simpul Pintu Penghubung"
+    pos: [10.0, 0.0]
+  - id: 4
+    label: "Halaman Evakuasi Luar (Goal)"
+    pos: [15.0, 0.0]
+
+edges:
+  - from: 0
+    to: 1
+    weight: 1.0
+    capacity: 10.0
+  - from: 0
+    to: 2
+    weight: 1.0
+    capacity: 10.0
+  - from: 1
+    to: 2
+    weight: 1.0
+    capacity: 5.0
+  - from: 1
+    to: 3
+    weight: 1.0
+    capacity: 8.0
+  - from: 2
+    to: 3
+    weight: 1.0
+    capacity: 8.0
+  - from: 3
+    to: 4
+    weight: 1.0
+    capacity: 15.0
+
+execution_plan:
+  start_node: 0
+  goal_node: 4
+  events:
+    - step: 1
+      type: "CONFLICT_NODE_TRIGGER"
+      target_node: 1
+      description: "Sarang Tawon Vespa mengamuk di Lorong A (Node 1)! Diperlukan penjadwalan alokasi time-slot (coloring) agar evakuasi melewati jalur secara bergantian."

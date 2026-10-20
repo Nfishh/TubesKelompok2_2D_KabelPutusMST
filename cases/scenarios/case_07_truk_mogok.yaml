@@ -1,0 +1,56 @@
+case_id: "case_07_truk_mogok"
+title: "Evakuasi Darurat: Bottleneck Akibat Truk Muatan Mogok di Persimpangan"
+description: "Skenario evakuasi N=5 berbasis Maximum Flow. Truk muatan material patah as dan mogok tepat di persimpangan jalan utama (Edge 3 -> 4), memicu bottleneck parah yang membatasi throughput aliran massa/kendaraan."
+
+nodes:
+  - id: 0
+    label: "Kawasan Industri Sektor A (Source / Start)"
+    pos: [0.0, 0.0]
+  - id: 1
+    label: "Jalan Bypass Barat"
+    pos: [5.0, 5.0]
+  - id: 2
+    label: "Jalan Angkut Timur"
+    pos: [5.0, -5.0]
+  - id: 3
+    label: "Simpul Persimpangan Truk"
+    pos: [10.0, 0.0]
+  - id: 4
+    label: "Gerbang Keluar Kawasan (Sink / Goal)"
+    pos: [15.0, 0.0]
+
+edges:
+  - from: 0
+    to: 1
+    weight: 1.0
+    capacity: 20.0
+  - from: 0
+    to: 2
+    weight: 1.0
+    capacity: 20.0
+  - from: 1
+    to: 3
+    weight: 1.0
+    capacity: 15.0
+  - from: 2
+    to: 3
+    weight: 1.0
+    capacity: 15.0
+  - from: 1
+    to: 2
+    weight: 1.0
+    capacity: 5.0
+  - from: 3
+    to: 4
+    weight: 1.0
+    capacity: 30.0
+
+execution_plan:
+  start_node: 0
+  goal_node: 4
+  events:
+    - step: 1
+      type: "DYNAMIC_EDGE_CAPACITY"
+      target_edge: [3, 4]
+      new_capacity: 4.0
+      description: "Truk Muatan Mogok di persimpangan (Edge 3 -> 4), kapasitas aliran evakuasi tercekik hebat dari 30 menjadi 4 unit/detik!"

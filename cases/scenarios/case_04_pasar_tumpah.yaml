@@ -1,0 +1,56 @@
+case_id: "case_04_pasar_tumpah"
+title: "Evakuasi Darurat: Penurunan Kapasitas Akibat Pasar Tumpah Subuh"
+description: "Skenario evakuasi N=5 berbasis Maximum Flow. Lapak pedagang pasar tumpah meluap ke persimpangan jalan utama (Edge 0 -> 2), menurunkan kapasitas efektif aliran pejalan kaki/massa secara drastis."
+
+nodes:
+  - id: 0
+    label: "Stasiun Kereta Api (Source / Start)"
+    pos: [0.0, 0.0]
+  - id: 1
+    label: "Jalan Koridor Utara (Lebar 3m)"
+    pos: [5.0, 5.0]
+  - id: 2
+    label: "Jalan Pasar Lama (Lebar 4m)"
+    pos: [5.0, -5.0]
+  - id: 3
+    label: "Simpul Sub-Terminal"
+    pos: [10.0, 0.0]
+  - id: 4
+    label: "Area Lapangan Terbuka Safe Zone (Sink / Goal)"
+    pos: [15.0, 0.0]
+
+edges:
+  - from: 0
+    to: 1
+    weight: 1.0
+    capacity: 15.0
+  - from: 0
+    to: 2
+    weight: 1.0
+    capacity: 25.0
+  - from: 1
+    to: 3
+    weight: 1.0
+    capacity: 12.0
+  - from: 2
+    to: 3
+    weight: 1.0
+    capacity: 20.0
+  - from: 1
+    to: 2
+    weight: 1.0
+    capacity: 8.0
+  - from: 3
+    to: 4
+    weight: 1.0
+    capacity: 30.0
+
+execution_plan:
+  start_node: 0
+  goal_node: 4
+  events:
+    - step: 1
+      type: "DYNAMIC_EDGE_CAPACITY"
+      target_edge: [0, 2]
+      new_capacity: 3.0
+      description: "Pedagang Pasar Tumpah meluap ke Jalan Pasar Lama (Edge 0 -> 2), kapasitas efektif aliran evakuasi anjlok dari 25 menjadi 3 orang/detik!"

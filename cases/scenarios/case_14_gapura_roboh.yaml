@@ -1,0 +1,56 @@
+case_id: "case_14_gapura_roboh"
+title: "Evakuasi Darurat: Gapura Peringatan Roboh Menutup Gerbang Utama"
+description: "Skenario evakuasi N=5 berbasis Pathfinding. Gapura besi hiasan roboh menimpa akses gerbang utama (Edge 3 -> 4), memaksa pengalihan jalur evakuasi ke pintu darurat samping."
+
+nodes:
+  - id: 0
+    label: "Halaman Dalam Kompleks (Start)"
+    pos: [0.0, 0.0]
+  - id: 1
+    label: "Selasar Barat"
+    pos: [5.0, 4.0]
+  - id: 2
+    label: "Selasar Timur"
+    pos: [5.0, -4.0]
+  - id: 3
+    label: "Area Depan Gerbang Utama"
+    pos: [10.0, 0.0]
+  - id: 4
+    label: "Jalan Raya Safe Zone (Goal)"
+    pos: [15.0, 0.0]
+
+edges:
+  - from: 0
+    to: 1
+    weight: 2.0
+    capacity: 10.0
+  - from: 0
+    to: 2
+    weight: 3.0
+    capacity: 10.0
+  - from: 1
+    to: 3
+    weight: 2.0
+    capacity: 8.0
+  - from: 2
+    to: 3
+    weight: 2.0
+    capacity: 8.0
+  - from: 1
+    to: 2
+    weight: 1.0
+    capacity: 5.0
+  - from: 3
+    to: 4
+    weight: 1.0
+    capacity: 15.0
+
+execution_plan:
+  start_node: 0
+  goal_node: 4
+  events:
+    - step: 1
+      type: "DYNAMIC_EDGE_WEIGHT"
+      target_edge: [3, 4]
+      new_weight: 99.0
+      description: "Gapura Besi Roboh menimpa Gerbang Utama (Edge 3 -> 4), rute terblokir total!"

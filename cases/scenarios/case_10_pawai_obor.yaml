@@ -1,0 +1,55 @@
+case_id: "case_10_pawai_obor"
+title: "Pengaturan Arus Evakuasi: Pawai Obor Warga Melintasi Persimpangan"
+description: "Skenario N=5 berbasis Graph Coloring / Conflict Scheduling. Rombongan pawai obor warga melintasi persimpangan utama secara bergelombang, menuntut alokasi slot waktu (color/time-slot) yang terpisah agar arus evakuasi warga tidak bertabrakan di titik simpul."
+
+nodes:
+  - id: 0
+    label: "Titik Kumpul Pemukiman Warga (Start)"
+    pos: [0.0, 0.0]
+  - id: 1
+    label: "Persimpangan Masjid Agung"
+    pos: [5.0, 5.0]
+  - id: 2
+    label: "Persimpangan Lapangan RW"
+    pos: [5.0, -5.0]
+  - id: 3
+    label: "Simpul Pertigaan Utama"
+    pos: [10.0, 0.0]
+  - id: 4
+    label: "Zona Aman Evakuasi Lapangan Sepak Bola (Goal)"
+    pos: [15.0, 0.0]
+
+edges:
+  - from: 0
+    to: 1
+    weight: 1.0
+    capacity: 10.0
+  - from: 0
+    to: 2
+    weight: 1.0
+    capacity: 10.0
+  - from: 1
+    to: 2
+    weight: 1.0
+    capacity: 5.0
+  - from: 1
+    to: 3
+    weight: 1.0
+    capacity: 10.0
+  - from: 2
+    to: 3
+    weight: 1.0
+    capacity: 10.0
+  - from: 3
+    to: 4
+    weight: 1.0
+    capacity: 15.0
+
+execution_plan:
+  start_node: 0
+  goal_node: 4
+  events:
+    - step: 1
+      type: "CONFLICT_NODE_TRIGGER"
+      target_node: 1
+      description: "Rombongan Pawai Obor Warga melintasi Persimpangan Masjid Agung (Node 1)! Diperlukan alokasi time-slot (coloring) agar alur evakuasi warga tidak bentrok di titik simpul."

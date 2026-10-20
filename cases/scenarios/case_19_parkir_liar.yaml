@@ -1,0 +1,56 @@
+case_id: "case_19_parkir_liar"
+title: "Evakuasi Darurat: Penurunan Kapasitas Akibat Parkir Liar Motor"
+description: "Skenario evakuasi N=5 berbasis Maximum Flow. Deretan sepeda motor parkir sembarangan mempersempit lebar efektif lorong evakuasi (Edge 2 -> 3), menurunkan kapasitas throughput aliran evakuasi."
+
+nodes:
+  - id: 0
+    label: "Gedung Parkir Pusat (Source / Start)"
+    pos: [0.0, 0.0]
+  - id: 1
+    label: "Lorong Akses Utara"
+    pos: [5.0, 5.0]
+  - id: 2
+    label: "Lorong Akses Selatan"
+    pos: [5.0, -5.0]
+  - id: 3
+    label: "Simpul Pintu Samping"
+    pos: [10.0, 0.0]
+  - id: 4
+    label: "Zona Safe Zone Halaman (Sink / Goal)"
+    pos: [15.0, 0.0]
+
+edges:
+  - from: 0
+    to: 1
+    weight: 1.0
+    capacity: 12.0
+  - from: 0
+    to: 2
+    weight: 1.0
+    capacity: 20.0
+  - from: 1
+    to: 3
+    weight: 1.0
+    capacity: 10.0
+  - from: 2
+    to: 3
+    weight: 1.0
+    capacity: 18.0
+  - from: 1
+    to: 2
+    weight: 1.0
+    capacity: 5.0
+  - from: 3
+    to: 4
+    weight: 1.0
+    capacity: 25.0
+
+execution_plan:
+  start_node: 0
+  goal_node: 4
+  events:
+    - step: 1
+      type: "DYNAMIC_EDGE_CAPACITY"
+      target_edge: [2, 3]
+      new_capacity: 3.0
+      description: "Parkir Liar Sepeda Motor meluber ke Lorong Akses Selatan (Edge 2 -> 3), kapasitas evakuasi anjlok dari 18 menjadi 3 unit/detik!"

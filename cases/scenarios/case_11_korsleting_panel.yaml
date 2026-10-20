@@ -1,0 +1,56 @@
+case_id: "case_11_korsleting_panel"
+title: "Evakuasi Darurat: Korsleting Panel Listrik Memicu Titik Api di Koridor"
+description: "Skenario evakuasi N=5 berbasis Pathfinding. Ledakan dan percikan api akibat korsleting panel listrik di Koridor Utama (Edge 0 -> 2) memaksa penghuni berbalik arah dan mengalihkan rute evakuasi melalui Lorong Samping."
+
+nodes:
+  - id: 0
+    label: "Area Lobi Utama Gedung (Start)"
+    pos: [0.0, 0.0]
+  - id: 1
+    label: "Lorong Samping Barat"
+    pos: [5.0, 4.0]
+  - id: 2
+    label: "Koridor Utama Tengah"
+    pos: [5.0, -4.0]
+  - id: 3
+    label: "Akses Tangga Darurat Selatan"
+    pos: [10.0, 0.0]
+  - id: 4
+    label: "Pintu Evakuasi Luar (Goal)"
+    pos: [15.0, 0.0]
+
+edges:
+  - from: 0
+    to: 1
+    weight: 3.0
+    capacity: 10.0
+  - from: 0
+    to: 2
+    weight: 1.0
+    capacity: 15.0
+  - from: 1
+    to: 3
+    weight: 2.0
+    capacity: 8.0
+  - from: 2
+    to: 3
+    weight: 2.0
+    capacity: 12.0
+  - from: 1
+    to: 2
+    weight: 1.0
+    capacity: 5.0
+  - from: 3
+    to: 4
+    weight: 2.0
+    capacity: 15.0
+
+execution_plan:
+  start_node: 0
+  goal_node: 4
+  events:
+    - step: 1
+      type: "DYNAMIC_EDGE_WEIGHT"
+      target_edge: [0, 2]
+      new_weight: 99.0
+      description: "Korsleting dan ledakan panel listrik memicu titik api di Koridor Utama Tengah (Edge 0 -> 2), jalur sangat berbahaya dan harus dihindari!"

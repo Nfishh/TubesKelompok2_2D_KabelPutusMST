@@ -1,0 +1,55 @@
+case_id: "case_05_tawuran_pelajar"
+title: "Pengaturan Arus Evakuasi: Konflik Tawuran Pelajar di Simpul Pertigaan"
+description: "Skenario N=5 berbasis Graph Coloring / Conflict Scheduling. Tawuran kelompok pelajar pecah di simpul pertigaan utama, menuntut pengalokasian slot waktu (color/time-slot) yang terpisah agar arus warga tidak bertabrakan dengan area konflik."
+
+nodes:
+  - id: 0
+    label: "Simpul Gerbang Utama"
+    pos: [0.0, 0.0]
+  - id: 1
+    label: "Pertigaan Halte Bus"
+    pos: [5.0, 5.0]
+  - id: 2
+    label: "Pertigaan Sekolah"
+    pos: [5.0, -5.0]
+  - id: 3
+    label: "Persimpangan Tugu Kota"
+    pos: [10.0, 0.0]
+  - id: 4
+    label: "Posko Kesehatan Darurat (Goal)"
+    pos: [15.0, 0.0]
+
+edges:
+  - from: 0
+    to: 1
+    weight: 1.0
+    capacity: 10.0
+  - from: 0
+    to: 2
+    weight: 1.0
+    capacity: 10.0
+  - from: 1
+    to: 2
+    weight: 1.0
+    capacity: 5.0
+  - from: 1
+    to: 3
+    weight: 1.0
+    capacity: 10.0
+  - from: 2
+    to: 3
+    weight: 1.0
+    capacity: 10.0
+  - from: 3
+    to: 4
+    weight: 1.0
+    capacity: 15.0
+
+execution_plan:
+  start_node: 0
+  goal_node: 4
+  events:
+    - step: 1
+      type: "CONFLICT_NODE_TRIGGER"
+      target_node: 2
+      description: "Tawuran Pelajar pecah di Pertigaan Sekolah (Node 2)! Membutuhkan penjadwalan alokasi time-slot (coloring) agar arus evakuasi warga terpisah dari area konflik."

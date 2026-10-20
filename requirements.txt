@@ -1,0 +1,12 @@
+# --- Core Graph & Network Data Structure ---
+networkx>=3.0
+
+# --- Scenario Configuration Parser ---
+pyyaml>=6.0
+
+# --- Data Exporter & Benchmark Analysis ---
+pandas>=2.0.0
+openpyxl>=3.1.0
+
+# --- Optional/Development: Testing & Code Quality ---
+pytest>=7.0.0
