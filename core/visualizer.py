@@ -4,8 +4,9 @@ import networkx as nx
 
 class SimpleGraphVisualizer:
 
-    def __init__(self, graph: nx.DiGraph):
+    def __init__(self, graph: nx.Graph, directed: bool = False):
         self.graph = graph
+        self.directed = directed
         # Ambil posisi node dari attribute 'pos' di YAML
         self.pos = nx.get_node_attributes(graph, "pos")
         # Jika pos tidak didefinisikan, gunakan spring layout otomatis
@@ -37,14 +38,17 @@ class SimpleGraphVisualizer:
             self.graph, self.pos, labels=node_labels, font_size=8
         )
 
-        # 2. Gambar Semua Edge (Default: Hitam/Abu-abu)
+        edge_style = {"arrows": self.directed}
+        if self.directed:
+            edge_style["arrowsize"] = 15
+
+        # 2. Gambar Semua Edge (Default: Hitam/Abu-abu, tanpa arah / undirected)
         nx.draw_networkx_edges(
             self.graph,
             self.pos,
             edgelist=self.graph.edges(),
             edge_color="gray",
-            arrows=True,
-            arrowsize=15,
+            **edge_style,
         )
 
         # Label Bobot Edge (Jarak/Waktu)
@@ -53,29 +57,38 @@ class SimpleGraphVisualizer:
             self.graph, self.pos, edge_labels=edge_labels, font_size=9
         )
 
-        # 3. Highlight Edge Khusus (Misal: Edge yang tersumbat kerumunan -> Merah Tebal)
+        # 3. Highlight Edge Khusus (Misal: Edge yang tersumbat / kabel putus -> Merah Tebal)
         if highlighted_edge:
+            hl_style = {"arrows": self.directed}
+            if self.directed:
+                hl_style["arrowsize"] = 20
             nx.draw_networkx_edges(
                 self.graph,
                 self.pos,
                 edgelist=[highlighted_edge],
                 edge_color="red",
                 width=3,
-                arrows=True,
-                arrowsize=20,
+                **hl_style,
             )
 
         # 4. Highlight Rute Hasil Algoritma (Warna Hijau Tebal)
-        if active_path and len(active_path) > 1:
+        if active_path and isinstance(active_path[0], (tuple, list)):
+            path_edges = [(e[0], e[1]) for e in active_path]
+        elif active_path and len(active_path) > 1:
             path_edges = list(zip(active_path[:-1], active_path[1:]))
+        else:
+            path_edges = []
+        if path_edges:
+            active_style = {"arrows": self.directed}
+            if self.directed:
+                active_style["arrowsize"] = 20
             nx.draw_networkx_edges(
                 self.graph,
                 self.pos,
                 edgelist=path_edges,
                 edge_color="green",
                 width=4,
-                arrows=True,
-                arrowsize=20,
+                **active_style,
             )
 
         plt.axis("off")
