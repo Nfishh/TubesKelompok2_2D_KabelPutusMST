@@ -1,9 +1,12 @@
+from algorithms.registry import AlgorithmRegistry
 from core.base_algorithm import BaseGraphAlgorithm
 from core.graph_model import SpatialGraphModel
 
 
 class StaticKruskal(BaseGraphAlgorithm):
     """Algoritma Dasar Minimum Spanning Tree (Kruskal's Algorithm)."""
+
+    SUPPORTED_EVENT_TYPES = frozenset({"DYNAMIC_EDGE_WEIGHT"})
 
     def __init__(self, model: SpatialGraphModel):
         super().__init__(model)
@@ -30,7 +33,7 @@ class StaticKruskal(BaseGraphAlgorithm):
             return True
         return False
 
-    def run(self) -> tuple[list, float]:
+    def run(self, start_node=None, goal_node=None) -> tuple[list, float]:
         mst_edges = []
         total_cost = 0.0
 
@@ -74,3 +77,27 @@ class StaticKruskal(BaseGraphAlgorithm):
                 )
 
         return mst_edges, total_cost
+
+    def handle_dynamic_event(self, event_data: dict):
+        u, v = event_data["edge"]
+        new_weight = event_data["new_weight"]
+        old_weight = self.graph[u][v].get("weight", 1)
+
+        # Mutation pada Graf
+        self.graph[u][v]["weight"] = new_weight
+
+        self.log_step(
+            event_type="UPDATE_WEIGHT_EVENT",
+            state_mutations={
+                "target_edge": [u, v],
+                "old_weight": old_weight,
+                "new_weight": new_weight,
+            },
+        )
+
+        # Hitung ulang MST dari awal
+        return self.run()
+
+
+AlgorithmRegistry.register("static_kruskal", StaticKruskal)
+AlgorithmRegistry.register_alias("spanning_tree", "static_kruskal")
