@@ -1,56 +1,329 @@
-case_id: "case_24_kabel_putus"
-title: "Jaringan Komunikasi: Kabel Sirkuit Utama Putus Akibat Pohon/Cuaca"
-description: "Skenario N=5 berbasis Minimum Spanning Tree (MST). Putusnya sirkuit kabel komunikasi utama memutus jaringan alarm antar gedung, menuntut pembentukan kembali topologi jaringan terkecil dengan total panjang kabel minimum."
+case_id: "case_24_palapa_kabel_putus"
+title: "Palapa Ring Timur: Simulasi Failover MST Akibat Kabel Putus"
+description: "Pemodelan Giant Component jaringan Palapa Ring Timur. Mensimulasikan algoritma Minimum Spanning Tree (MST) untuk rerouting saat terjadi kegagalan infrastruktur (kabel laut putus atau menara microwave tumbang)."
 
 nodes:
   - id: 0
-    label: "Master Switch Panel (Start)"
-    pos: [0.0, 0.0]
+    label: "Alor"
+    pos: [70.0, -675.0]
   - id: 1
-    label: "Sub-Panel Gedung A"
-    pos: [6.0, 4.0]
+    label: "Wetar"
+    pos: [195.0, -650.0]
   - id: 2
-    label: "Sub-Panel Gedung B"
-    pos: [6.0, -4.0]
+    label: "Tiakur"
+    pos: [300.0, -670.0]
   - id: 3
-    label: "Sub-Panel Gedung C"
-    pos: [12.0, 0.0]
+    label: "Saumlaki"
+    pos: [550.0, -650.0]
   - id: 4
-    label: "Terminal Siren Luar (Goal)"
-    pos: [18.0, 0.0]
+    label: "Tual"
+    pos: [650.0, -500.0]
+  - id: 5
+    label: "Dobo"
+    pos: [765.0, -495.0]
+  - id: 6
+    label: "Timika"
+    pos: [955.0, -415.0]
+  - id: 7
+    label: "Agats"
+    pos: [1036.0, -480.0]
+  - id: 8
+    label: "BMH Kepi"
+    pos: [1110.0, -580.0]
+  - id: 9
+    label: "Kepi Tower"
+    pos: [1130.0, -555.0]
+  - id: 10
+    label: "Tanah Merah"
+    pos: [1190.0, -525.0]
+  - id: 11
+    label: "Muting"
+    pos: [1225.0, -590.0]
+  - id: 12
+    label: "Merauke"
+    pos: [1205.0, -700.0]
+  - id: 13
+    label: "Waropko"
+    pos: [1225.0, -485.0]
+  - id: 14
+    label: "Oksibil"
+    pos: [1220.0, -445.0]
+  - id: 15
+    label: "Dekai"
+    pos: [1150.0, -440.0]
+  - id: 16
+    label: "Sumohai"
+    pos: [1125.0, -410.0]
+  - id: 17
+    label: "Kenyam"
+    pos: [1060.0, -415.0]
+  - id: 18
+    label: "Wamena"
+    pos: [1095.0, -390.0]
+  - id: 19
+    label: "Elelim"
+    pos: [1135.0, -365.0]
+  - id: 20
+    label: "Arso"
+    pos: [1215.0, -295.0]
+  - id: 21
+    label: "Kobakma"
+    pos: [1105.0, -355.0]
+  - id: 22
+    label: "Tiom"
+    pos: [1045.0, -385.0]
+  - id: 23
+    label: "Karubaga"
+    pos: [1065.0, -350.0]
+  - id: 24
+    label: "Kota Mulia"
+    pos: [1025.0, -355.0]
+  - id: 25
+    label: "Ilaga"
+    pos: [995.0, -385.0]
+  - id: 26
+    label: "Sugapa"
+    pos: [960.0, -360.0]
+  - id: 27
+    label: "Enarotali"
+    pos: [920.0, -380.0]
+  - id: 28
+    label: "Tigi"
+    pos: [910.0, -395.0]
+  - id: 29
+    label: "Kigamani"
+    pos: [875.0, -375.0]
+  - id: 30
+    label: "Nabire"
+    pos: [845.0, -330.0]
+  - id: 31
+    label: "Raisei"
+    pos: [780.0, -290.0]
+  - id: 32
+    label: "Botawa"
+    pos: [920.0, -265.0]
+  - id: 33
+    label: "Serui"
+    pos: [900.0, -225.0]
+  - id: 34
+    label: "Biak"
+    pos: [895.0, -180.0]
+  - id: 35
+    label: "Sorendiweri"
+    pos: [870.0, -140.0]
+  - id: 36
+    label: "Numfor"
+    pos: [810.0, -165.0]
+  - id: 37
+    label: "Manokwari"
+    pos: [745.0, -145.0]
+  - id: 38
+    label: "Ransiki"
+    pos: [750.0, -205.0]
+  - id: 39
+    label: "Bintuni"
+    pos: [715.0, -240.0]
+  - id: 40
+    label: "Teminabuan"
+    pos: [610.0, -200.0]
+  - id: 41
+    label: "Aifat"
+    pos: [645.0, -180.0]
+  - id: 42
+    label: "Sorong"
+    pos: [555.0, -155.0]
+  - id: 43
+    label: "FEF"
+    pos: [630.0, -135.0]
 
 edges:
   - from: 0
     to: 1
-    weight: 3.0
-    capacity: 10.0
-  - from: 0
-    to: 2
-    weight: 8.0
+    weight: 771.0
     capacity: 10.0
   - from: 1
     to: 2
-    weight: 4.0
-    capacity: 5.0
-  - from: 1
-    to: 3
-    weight: 7.0
-    capacity: 8.0
+    weight: 585.0
+    capacity: 10.0
   - from: 2
     to: 3
-    weight: 2.0
-    capacity: 8.0
+    weight: 1242.0
+    capacity: 10.0
   - from: 3
     to: 4
-    weight: 5.0
-    capacity: 12.0
+    weight: 1170.0
+    capacity: 10.0
+  - from: 4
+    to: 5
+    weight: 714.0
+    capacity: 10.0
+  - from: 5
+    to: 6
+    weight: 1140.0
+    capacity: 10.0
+  - from: 6
+    to: 7
+    weight: 406.0
+    capacity: 10.0
+  - from: 7
+    to: 8
+    weight: 576.0
+    capacity: 10.0
+  - from: 8
+    to: 9
+    weight: 57.0
+    capacity: 10.0
+  - from: 9
+    to: 10
+    weight: 250.0
+    capacity: 0.25
+  - from: 10
+    to: 11
+    weight: 192.0
+    capacity: 10.0
+  - from: 11
+    to: 12
+    weight: 231.0
+    capacity: 10.0
+  - from: 10
+    to: 13
+    weight: 121.0
+    capacity: 10.0
+  - from: 13
+    to: 14
+    weight: 200.0
+    capacity: 0.25
+  - from: 14
+    to: 15
+    weight: 250.0
+    capacity: 0.25
+  - from: 15
+    to: 16
+    weight: 200.0
+    capacity: 0.25
+  - from: 16
+    to: 17
+    weight: 350.0
+    capacity: 0.25
+  - from: 17
+    to: 18
+    weight: 300.0
+    capacity: 0.25
+  - from: 18
+    to: 19
+    weight: 300.0
+    capacity: 0.25
+  - from: 19
+    to: 20
+    weight: 400.0
+    capacity: 0.25
+  - from: 19
+    to: 21
+    weight: 300.0
+    capacity: 0.25
+  - from: 21
+    to: 22
+    weight: 350.0
+    capacity: 0.25
+  - from: 22
+    to: 23
+    weight: 250.0
+    capacity: 0.25
+  - from: 23
+    to: 24
+    weight: 200.0
+    capacity: 0.25
+  - from: 24
+    to: 25
+    weight: 350.0
+    capacity: 0.25
+  - from: 25
+    to: 26
+    weight: 300.0
+    capacity: 0.25
+  - from: 26
+    to: 27
+    weight: 300.0
+    capacity: 0.25
+  - from: 6
+    to: 28
+    weight: 205.0
+    capacity: 10.0
+  - from: 28
+    to: 27
+    weight: 29.0
+    capacity: 10.0
+  - from: 27
+    to: 29
+    weight: 67.0
+    capacity: 10.0
+  - from: 29
+    to: 30
+    weight: 201.0
+    capacity: 10.0
+  - from: 30
+    to: 32
+    weight: 382.0
+    capacity: 10.0
+  - from: 32
+    to: 33
+    weight: 88.0
+    capacity: 10.0
+  - from: 33
+    to: 34
+    weight: 418.0
+    capacity: 10.0
+  - from: 34
+    to: 35
+    weight: 200.0
+    capacity: 10.0
+  - from: 35
+    to: 36
+    weight: 351.0
+    capacity: 10.0
+  - from: 36
+    to: 37
+    weight: 279.0
+    capacity: 10.0
+  - from: 30
+    to: 31
+    weight: 534.0
+    capacity: 10.0
+  - from: 31
+    to: 38
+    weight: 356.0
+    capacity: 10.0
+  - from: 37
+    to: 38
+    weight: 113.0
+    capacity: 10.0
+  - from: 38
+    to: 39
+    weight: 177.0
+    capacity: 10.0
+  - from: 39
+    to: 40
+    weight: 516.0
+    capacity: 10.0
+  - from: 40
+    to: 41
+    weight: 93.0
+    capacity: 10.0
+  - from: 41
+    to: 42
+    weight: 214.0
+    capacity: 10.0
+  - from: 42
+    to: 43
+    weight: 175.0
+    capacity: 10.0
 
 execution_plan:
   start_node: 0
-  goal_node: 4
+  goal_node: 43
   events:
     - step: 1
       type: "DYNAMIC_EDGE_WEIGHT"
-      target_edge: [0, 1]
-      new_weight: 99.0
-      description: "Kabel Sirkuit Utama Putus (Edge 0 -> 1)! Algoritma MST menghitung ulang pembentukan topologi jaringan komunikasi terpendek."
+      target_edge: [6, 28]
+      new_weight: 9999.0
+      description: "Gempa! Kabel Timika-Tigi putus total. MST melakukan reroute."
