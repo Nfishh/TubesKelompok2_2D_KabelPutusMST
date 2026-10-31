@@ -19,7 +19,7 @@ ENSURE_ASCII = False
 DEFAULT_YAML_SCENARIO = CASES_DIR / "case_08_warga_nonton.yaml"
 
 # --- DEFAULT ALGORITHM (registry key atau alias kategori) ---
-DEFAULT_ALGORITHM = "pathfinding"
+DEFAULT_ALGORITHM = "spanning_tree"
 
 # --- MULTI-SCENARIO BATCH ---
 SCENARIO_FILE_PATTERNS = ("*.yaml", "*.yml")
