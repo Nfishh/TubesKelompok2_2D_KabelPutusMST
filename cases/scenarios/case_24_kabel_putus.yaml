@@ -141,182 +141,227 @@ edges:
     to: 1
     weight: 771.0
     capacity: 10.0
+    connection_type: "OSP Laut, Selat/Pulau"
   - from: 1
     to: 2
     weight: 585.0
     capacity: 10.0
+    connection_type: "OSP Laut, Selat/Pulau"
   - from: 2
     to: 3
     weight: 1242.0
     capacity: 10.0
+    connection_type: "OSP Laut, Selat/Pulau"
   - from: 3
     to: 4
     weight: 1170.0
     capacity: 10.0
+    connection_type: "OSP Laut, Selat/Pulau"
   - from: 4
     to: 5
     weight: 714.0
     capacity: 10.0
+    connection_type: "OSP Laut, Selat/Pulau"
   - from: 5
     to: 6
     weight: 1140.0
     capacity: 10.0
+    connection_type: "OSP Laut, Selat/Pulau"
   - from: 6
     to: 7
     weight: 406.0
     capacity: 10.0
+    connection_type: "OSP Laut, pesisir"
   - from: 7
     to: 8
     weight: 576.0
     capacity: 10.0
+    connection_type: "OSP Laut, pesisir"
   - from: 8
     to: 9
     weight: 57.0
     capacity: 10.0
+    connection_type: "OSP Darat"
   - from: 9
     to: 10
     weight: 250.0
     capacity: 0.25
+    connection_type: "Radio Microwave"
   - from: 10
     to: 11
     weight: 192.0
     capacity: 10.0
+    connection_type: "OSP Darat"
   - from: 11
     to: 12
     weight: 231.0
     capacity: 10.0
+    connection_type: "OSP Darat"
   - from: 10
     to: 13
     weight: 121.0
     capacity: 10.0
+    connection_type: "OSP Darat"
   - from: 13
     to: 14
     weight: 200.0
     capacity: 0.25
+    connection_type: "Radio Microwave"
   - from: 14
     to: 15
     weight: 250.0
     capacity: 0.25
+    connection_type: "Radio Microwave"
   - from: 15
     to: 16
     weight: 200.0
     capacity: 0.25
+    connection_type: "Radio Microwave"
   - from: 16
     to: 17
     weight: 350.0
     capacity: 0.25
+    connection_type: "Radio Microwave"
   - from: 17
     to: 18
     weight: 300.0
     capacity: 0.25
+    connection_type: "Radio Microwave"
   - from: 18
     to: 19
     weight: 300.0
     capacity: 0.25
+    connection_type: "Radio Microwave"
   - from: 19
     to: 20
     weight: 400.0
     capacity: 0.25
+    connection_type: "Radio Microwave"
   - from: 19
     to: 21
     weight: 300.0
     capacity: 0.25
+    connection_type: "Radio Microwave"
   - from: 21
     to: 22
     weight: 350.0
     capacity: 0.25
+    connection_type: "Radio Microwave"
   - from: 22
     to: 23
     weight: 250.0
     capacity: 0.25
+    connection_type: "Radio Microwave"
   - from: 23
     to: 24
     weight: 200.0
     capacity: 0.25
+    connection_type: "Radio Microwave"
   - from: 24
     to: 25
     weight: 350.0
     capacity: 0.25
+    connection_type: "Radio Microwave"
   - from: 25
     to: 26
     weight: 300.0
     capacity: 0.25
+    connection_type: "Radio Microwave"
   - from: 26
     to: 27
     weight: 300.0
     capacity: 0.25
+    connection_type: "Radio Microwave"
   - from: 6
     to: 28
     weight: 205.0
     capacity: 10.0
+    connection_type: "OSP Darat"
   - from: 28
     to: 27
     weight: 29.0
     capacity: 10.0
+    connection_type: "OSP Darat"
   - from: 27
     to: 29
     weight: 67.0
     capacity: 10.0
+    connection_type: "OSP Darat"
   - from: 29
     to: 30
     weight: 201.0
     capacity: 10.0
+    connection_type: "OSP Darat"
   - from: 30
     to: 32
     weight: 382.0
     capacity: 10.0
+    connection_type: "OSP Laut, pesisir"
   - from: 32
     to: 33
     weight: 88.0
     capacity: 10.0
+    connection_type: "OSP Laut, pesisir"
   - from: 33
     to: 34
     weight: 418.0
     capacity: 10.0
+    connection_type: "OSP Laut, pesisir"
   - from: 34
     to: 35
     weight: 200.0
     capacity: 10.0
+    connection_type: "OSP Laut, pesisir"
   - from: 35
     to: 36
     weight: 351.0
     capacity: 10.0
+    connection_type: "OSP Laut, Selat/Pulau"
   - from: 36
     to: 37
     weight: 279.0
     capacity: 10.0
+    connection_type: "OSP Laut, Selat/Pulau"
   - from: 30
     to: 31
     weight: 534.0
     capacity: 10.0
+    connection_type: "OSP Laut, pesisir"
   - from: 31
     to: 38
     weight: 356.0
     capacity: 10.0
+    connection_type: "OSP Laut, pesisir"
   - from: 37
     to: 38
     weight: 113.0
     capacity: 10.0
+    connection_type: "OSP Darat"
   - from: 38
     to: 39
     weight: 177.0
     capacity: 10.0
+    connection_type: "OSP Darat"
   - from: 39
     to: 40
     weight: 516.0
     capacity: 10.0
+    connection_type: "OSP Laut, pesisir"
   - from: 40
     to: 41
     weight: 93.0
     capacity: 10.0
+    connection_type: "OSP Darat"
   - from: 41
     to: 42
     weight: 214.0
     capacity: 10.0
+    connection_type: "OSP Darat"
   - from: 42
     to: 43
     weight: 175.0
     capacity: 10.0
+    connection_type: "OSP Darat"
 
 execution_plan:
   start_node: 0
